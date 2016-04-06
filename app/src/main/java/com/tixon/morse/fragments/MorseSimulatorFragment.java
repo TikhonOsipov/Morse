@@ -1,8 +1,11 @@
 package com.tixon.morse.fragments;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,7 +19,7 @@ import com.tixon.morse.databinding.MorseSimulatorFragmentBinding;
 /**
  * Created by tikhon.osipov on 06.04.2016.
  */
-public class MorseSimulatorFragment extends Fragment {
+public class MorseSimulatorFragment extends BaseFragment {
     MorseSimulatorFragmentBinding binding;
 
     Morse morse;
@@ -45,6 +48,13 @@ public class MorseSimulatorFragment extends Fragment {
             @Override
             public void onNewCode() {
 
+            }
+
+            @Override
+            public void onPress() {
+                if(shouldVibrate) {
+                    vibrator.vibrate(50);
+                }
             }
         };
     }

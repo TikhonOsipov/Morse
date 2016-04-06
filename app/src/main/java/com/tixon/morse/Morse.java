@@ -1,7 +1,10 @@
 package com.tixon.morse;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
+import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,6 +30,7 @@ public abstract class Morse {
 
     public abstract void onGenerateLetter(String letter);
     public abstract void onGenerateCode(String code);
+    public abstract void onPress();
 
     public Morse(Context context) {
         this.context = context;
@@ -64,7 +68,8 @@ public abstract class Morse {
     public boolean onTouch(View v, MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
             v.setPressed(true);
-            handler.postDelayed(detectSymbolRunnable, 400);
+            onPress();
+            //handler.postDelayed(detectSymbolRunnable, 400);
             Log.d("myLogs", "handler post delayed");
             timePressed = System.currentTimeMillis();
             Log.d("myLogs", "pressed time: " + timePressed);

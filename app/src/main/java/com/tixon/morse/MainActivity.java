@@ -2,6 +2,7 @@ package com.tixon.morse;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 return true;
         }
 
@@ -98,7 +100,7 @@ public class MainActivity extends AppCompatActivity
                 fm.beginTransaction().replace(R.id.containerMain, morseTestFragment).commit();
                 break;
             case R.id.morseStudy:
-                fm.beginTransaction().replace(R.id.containerMain, morseTestFragment).commit();
+                fm.beginTransaction().replace(R.id.containerMain, morseStudyFragment).commit();
                 break;
             default: break;
         }

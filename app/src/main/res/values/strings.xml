@@ -76,4 +76,5 @@
 
     <string name="correct">true</string>
     <string name="incorrect">false</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 </resources>

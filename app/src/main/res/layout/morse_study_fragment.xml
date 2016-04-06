@@ -15,6 +15,9 @@
         <variable
             name="code"
             type="String" />
+        <variable
+            name="codePreview"
+            type="String" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,9 +45,21 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <TextView
+                tools:text="._.."
+                android:id="@+id/textCodePreview"
+                android:text="@{codePreview}"
+                android:textSize="60sp"
+                android:textColor="@color/rippleDark"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <TextView
                 tools:text="._.."
                 android:id="@+id/textCode"
+                android:text="@{code}"
                 android:textSize="60sp"
                 android:gravity="center_horizontal"
                 android:layout_width="match_parent"
@@ -53,6 +68,7 @@
             <TextView
                 tools:text="Ы"
                 android:id="@+id/textLetter"
+                android:text="@{letter}"
                 android:textSize="50sp"
                 android:layout_marginTop="24dp"
                 android:gravity="center_horizontal"

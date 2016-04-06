@@ -1,9 +1,11 @@
 package com.tixon.morse.fragments;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +20,7 @@ import com.tixon.morse.databinding.MorseTestFragmentBinding;
 /**
  * Created by tikhon.osipov on 06.04.2016.
  */
-public class MorseTestFragment extends Fragment {
+public class MorseTestFragment extends BaseFragment {
 
     MorseTestFragmentBinding binding;
 
@@ -56,7 +58,7 @@ public class MorseTestFragment extends Fragment {
             @Override
             public void run() {
                 binding.textCorrect.setVisibility(View.INVISIBLE);
-                if(index < morseAbc.length) {
+                if(index < morseAbc.length - 1) {
                     index++;
                     binding.setProgress(String.valueOf(index + 1) + " / " + String.valueOf(morseAbc.length));
                     binding.setLetter(morseAbc[index]);
@@ -66,6 +68,7 @@ public class MorseTestFragment extends Fragment {
                 }
             }
         };
+
         morse = new Morse(getActivity()) {
             @Override
             public void onGenerateLetter(String letter) {
@@ -75,7 +78,7 @@ public class MorseTestFragment extends Fragment {
                 binding.pressurePanel.setOnTouchListener(null);
                 binding.pressurePanel.setClickable(false);
                 //через 3 секунды переключить на новую букву, очистить код и убрать correct
-                handler.postDelayed(nextLetterRunnable, 3000);
+                handler.postDelayed(nextLetterRunnable, 2000);
             }
 
             @Override
@@ -85,12 +88,14 @@ public class MorseTestFragment extends Fragment {
 
             @Override
             public void onNewCode() {
-                /*binding.textCorrect.setVisibility(View.INVISIBLE);
-                if(index < morseAbc.length) {
-                    index++;
-                    binding.setProgress(String.valueOf(index + 1) + " / " + String.valueOf(morseAbc.length));
-                    binding.setLetter(morseAbc[index]);
-                }*/
+
+            }
+
+            @Override
+            public void onPress() {
+                if(shouldVibrate) {
+                    vibrator.vibrate(50);
+                }
             }
         };
     }
