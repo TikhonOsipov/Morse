@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">Morse</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string-array name="russian_abc">
+        <item>А</item>
+        <item>Б</item>
+        <item>В</item>
+        <item>Г</item>
+        <item>Д</item>
+        <item>Е</item>
+        <item>Ж</item>
+        <item>З</item>
+        <item>И</item>
+        <item>Й</item>
+        <item>К</item>
+        <item>Л</item>
+        <item>М</item>
+        <item>Н</item>
+        <item>О</item>
+        <item>П</item>
+        <item>Р</item>
+        <item>С</item>
+        <item>Т</item>
+        <item>У</item>
+        <item>Ф</item>
+        <item>Х</item>
+        <item>Ц</item>
+        <item>Ч</item>
+        <item>Ш</item>
+        <item>Щ</item>
+        <item>Ь</item>
+        <item>Ы</item>
+        <item>Э</item>
+        <item>Ю</item>
+        <item>Я</item>
+    </string-array>
+
+    <string-array name="russian_morse">
+        <item>._</item>
+        <item>_...</item>
+        <item>.__</item>
+        <item>__.</item>
+        <item>_..</item>
+        <item>.</item>
+        <item>..._</item>
+        <item>__..</item>
+        <item>..</item>
+        <item>.___</item>
+        <item>_._</item>
+        <item>._..</item>
+        <item>__</item>
+        <item>_.</item>
+        <item>___</item>
+        <item>.__.</item>
+        <item>._.</item>
+        <item>...</item>
+        <item>_</item>
+        <item>.._</item>
+        <item>.._.</item>
+        <item>....</item>
+        <item>_._.</item>
+        <item>___.</item>
+        <item>____</item>
+        <item>__._</item>
+        <item>_.._</item>
+        <item>_.__</item>
+        <item>.._..</item>
+        <item>..__</item>
+        <item>._._</item>
+    </string-array>
+
+    <string name="correct">true</string>
+    <string name="incorrect">false</string>
+</resources>
