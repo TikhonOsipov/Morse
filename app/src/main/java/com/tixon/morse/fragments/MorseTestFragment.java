@@ -1,11 +1,8 @@
 package com.tixon.morse.fragments;
 
-import android.app.Fragment;
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +31,7 @@ public class MorseTestFragment extends BaseFragment {
     Morse morse;
 
     int index = 0;
+    String inputCode = "";
     String[] morseAbc;
 
     Handler handler = new Handler();
@@ -62,7 +60,8 @@ public class MorseTestFragment extends BaseFragment {
                     index++;
                     binding.setProgress(String.valueOf(index + 1) + " / " + String.valueOf(morseAbc.length));
                     binding.setLetter(morseAbc[index]);
-                    binding.setCode("");
+                    inputCode = "";
+                    binding.codeView.clear();
                     binding.pressurePanel.setOnTouchListener(onTouchPressurePanel);
                     binding.pressurePanel.setClickable(true);
                 }
@@ -72,18 +71,19 @@ public class MorseTestFragment extends BaseFragment {
         morse = new Morse(getActivity()) {
             @Override
             public void onGenerateLetter(String letter) {
-                String code = binding.getCode();
-                binding.setCorrect(morse.checkCorrect(code, morseAbc[index]));
+                binding.setCorrect(morse.checkCorrect(inputCode, morseAbc[index]));
                 binding.textCorrect.setVisibility(View.VISIBLE);
                 binding.pressurePanel.setOnTouchListener(null);
                 binding.pressurePanel.setClickable(false);
-                //через 3 секунды переключить на новую букву, очистить код и убрать correct
+                //через 2 секунды переключить на новую букву, очистить код и убрать correct
                 handler.postDelayed(nextLetterRunnable, 2000);
             }
 
             @Override
             public void onGenerateCode(String code) {
-                binding.setCode(code);
+                inputCode = code;
+                binding.codeView.clear();
+                viewCode(code, binding.codeView);
             }
 
             @Override
@@ -111,5 +111,11 @@ public class MorseTestFragment extends BaseFragment {
         binding.pressurePanel.setOnTouchListener(onTouchPressurePanel);
         binding.pressurePanel.setClickable(true);
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        morse.updateSavedValues();
     }
 }

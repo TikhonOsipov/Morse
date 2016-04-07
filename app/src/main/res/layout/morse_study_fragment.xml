@@ -15,9 +15,6 @@
         <variable
             name="code"
             type="String" />
-        <variable
-            name="codePreview"
-            type="String" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -39,29 +36,24 @@
             android:background="@drawable/button_background"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="200dp">
+            <com.tixon.morse.views.CodeView
+                android:id="@+id/codeView"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginBottom="50dp"
+                android:layout_gravity="center" />
+        </FrameLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <com.tixon.morse.views.CodeView
                 tools:text="._.."
-                android:id="@+id/textCodePreview"
-                android:text="@{codePreview}"
-                android:textSize="60sp"
-                android:textColor="@color/rippleDark"
-                android:gravity="center_horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                tools:text="._.."
-                android:id="@+id/textCode"
-                android:text="@{code}"
-                android:textSize="60sp"
-                android:gravity="center_horizontal"
+                android:id="@+id/codePreview"
+                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

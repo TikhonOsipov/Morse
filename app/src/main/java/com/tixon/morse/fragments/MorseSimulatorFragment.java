@@ -1,11 +1,7 @@
 package com.tixon.morse.fragments;
 
-import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -42,12 +38,12 @@ public class MorseSimulatorFragment extends BaseFragment {
 
             @Override
             public void onGenerateCode(String code) {
-                binding.textCode.setText(code);
+                binding.codeView.clear();
+                viewCode(code, binding.codeView);
             }
 
             @Override
             public void onNewCode() {
-
             }
 
             @Override
@@ -70,5 +66,11 @@ public class MorseSimulatorFragment extends BaseFragment {
             }
         });
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        morse.updateSavedValues();
     }
 }

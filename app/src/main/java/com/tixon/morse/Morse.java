@@ -3,7 +3,6 @@ package com.tixon.morse;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -18,10 +17,12 @@ import java.util.Arrays;
 public abstract class Morse {
 
     private Context context;
+    private SharedPreferences preferences;
 
     private long timePressed = 0;
     private long timeReleased = 0;
     private long timeRange = 0;
+    private long step;
 
     private ArrayList<String> russianAbc, russianMorse, letterCode;
 
@@ -34,9 +35,13 @@ public abstract class Morse {
 
     public Morse(Context context) {
         this.context = context;
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
         letterCode = new ArrayList<>();
         russianAbc = new ArrayList<>(Arrays.asList(context.getResources().getStringArray(R.array.russian_abc)));
         russianMorse = new ArrayList<>(Arrays.asList(context.getResources().getStringArray(R.array.russian_morse)));
+
+        //get values from defaultSharedPreferences
+        updateSavedValues();
 
         handler = new Handler();
         detectSymbolRunnable = new Runnable() {
@@ -92,8 +97,10 @@ public abstract class Morse {
             timeReleased = System.currentTimeMillis();
             timeRange = timeReleased - timePressed;
             Log.d("myLogs", "pressed time: " + timeReleased + "; range = " + timeRange);
+            //not add in letterCode list when its size reaches 5
             if(letterCode.size() < 5) {
-                if(timeRange > 0 && timeRange <= 100) {
+                //use step
+                if(timeRange > 0 && timeRange <= step) {
                     letterCode.add("."); //add dit
                 } else {
                     letterCode.add("_"); //add dah
@@ -105,6 +112,11 @@ public abstract class Morse {
             return true;
         }
         return false;
+    }
+
+    public void updateSavedValues() {
+        step = preferences.getInt(context.getString(R.string.keyStep), 100);
+        Log.d("myLogs", "step = " + step);
     }
 
     public boolean checkCorrect(String code, String letter) {

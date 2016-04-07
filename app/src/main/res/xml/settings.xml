@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <CheckBoxPreference
-        android:key="vibrate_setting"
-        android:summaryOn="Vibrate"
-        android:summaryOff="Not vibrate"
-        android:title="Vibrate title"
-        android:text="Vibrate text" />
+        android:key="@string/keyVibrate"
+        android:summaryOn="@string/vibrateSummaryOn"
+        android:summaryOff="@string/vibrateSummaryOff"
+        android:title="@string/vibrateTitle" />
+
+    <com.tixon.morse.SeekBarPreference
+        android:key="@string/keyStep"
+        android:title="@string/stepTitle"
+        android:layout="@layout/seek_bar_preference_layout" />
+
+    <com.tixon.morse.SeekBarPreference
+        android:key="@string/keyTimeWait"
+        android:title="@string/timeWaitTitle"
+        android:layout="@layout/seek_bar_preference_layout" />
 </PreferenceScreen>
