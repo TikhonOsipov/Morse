@@ -6,6 +6,9 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="morse_ime">morse_ime</string>
+    <string name="subtype_ru_RU">Russian</string>
+
     <string-array name="russian_abc">
         <item>А</item>
         <item>Б</item>

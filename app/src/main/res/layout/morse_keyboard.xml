@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.inputmethodservice.KeyboardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/morseKeyboard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--<com.tixon.morse.views.CodeView
+        android:id="@+id/codeViewKeyboard"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/codeViewMarginBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>-->
+</android.inputmethodservice.KeyboardView>
