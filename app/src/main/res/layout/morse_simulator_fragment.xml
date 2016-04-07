@@ -20,11 +20,40 @@
             android:layout_width="match_parent"
             android:layout_height="200dp">
 
+            <ImageView
+                tools:ignore="contentDescription"
+                android:id="@+id/dashAlert"
+                android:src="@drawable/red_circle"
+                android:visibility="invisible"
+                android:scaleType="fitXY"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp" />
+
+            <ImageView
+                tools:ignore="contentDescription"
+                android:id="@+id/progressBarBackground"
+                android:src="@drawable/progress_bar_background"
+                android:visibility="invisible"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp" />
+
+            <com.tixon.morse.views.RingProgressBar
+                android:id="@+id/dotProgressBar"
+                android:visibility="invisible"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp" />
+
             <com.tixon.morse.views.CodeView
                 android:id="@+id/codeView"
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="@dimen/codeViewMarginBottom"
                 android:layout_gravity="center" />
         </FrameLayout>
 

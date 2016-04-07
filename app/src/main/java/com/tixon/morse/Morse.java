@@ -32,6 +32,7 @@ public abstract class Morse {
     public abstract void onGenerateLetter(String letter);
     public abstract void onGenerateCode(String code);
     public abstract void onPress();
+    public abstract void onRelease();
 
     public Morse(Context context) {
         this.context = context;
@@ -94,12 +95,13 @@ public abstract class Morse {
         }
         else if(event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
             v.setPressed(false);
+            onRelease();
             timeReleased = System.currentTimeMillis();
             timeRange = timeReleased - timePressed;
             Log.d("myLogs", "pressed time: " + timeReleased + "; range = " + timeRange);
             //not add in letterCode list when its size reaches 5
             if(letterCode.size() < 5) {
-                //use step
+                //use stepTime
                 if(timeRange > 0 && timeRange <= step) {
                     letterCode.add("."); //add dit
                 } else {

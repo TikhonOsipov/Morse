@@ -1,8 +1,11 @@
 package com.tixon.morse.fragments;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,6 +33,7 @@ public class MorseSimulatorFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         morse = new Morse(getActivity()) {
             @Override
             public void onGenerateLetter(String letter) {
@@ -48,9 +52,20 @@ public class MorseSimulatorFragment extends BaseFragment {
 
             @Override
             public void onPress() {
+                //binding.dotProgressBar.setVisibility(View.VISIBLE);
+                //binding.progressBarBackground.setVisibility(View.VISIBLE);
+                animator.start();
                 if(shouldVibrate) {
                     vibrator.vibrate(50);
                 }
+            }
+
+            @Override
+            public void onRelease() {
+                animator.cancel();
+                binding.dotProgressBar.setVisibility(View.INVISIBLE);
+                //binding.progressBarBackground.setVisibility(View.INVISIBLE);
+                binding.dashAlert.setVisibility(View.INVISIBLE);
             }
         };
     }
@@ -72,5 +87,35 @@ public class MorseSimulatorFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         morse.updateSavedValues();
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                Integer degree = (Integer) animation.getAnimatedValue();
+                binding.dotProgressBar.updateDegree(degree);
+            }
+        });
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Log.d("myLogs", "animation ended!");
+                binding.dotProgressBar.setVisibility(View.VISIBLE);
+                binding.dashAlert.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
     }
 }

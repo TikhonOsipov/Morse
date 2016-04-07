@@ -97,6 +97,11 @@ public class MorseTestFragment extends BaseFragment {
                     vibrator.vibrate(50);
                 }
             }
+
+            @Override
+            public void onRelease() {
+
+            }
         };
     }
 

@@ -10,4 +10,5 @@
     <color name="rippleDark">#0d47a1</color>
     <color name="rippleLight">#2196f3</color>
     <color name="codeBackground">#e3f2fd</color>
+    <color name="progressBarBackground">#1976d2</color>
 </resources>

@@ -44,7 +44,7 @@
                 android:id="@+id/codeView"
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="@dimen/codeViewMarginBottom"
                 android:layout_gravity="center" />
         </FrameLayout>
 

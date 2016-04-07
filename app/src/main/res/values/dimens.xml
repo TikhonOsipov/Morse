@@ -11,4 +11,6 @@
     <dimen name="dashWidth">48dp</dimen>
     <dimen name="codeHeight">16dp</dimen>
     <dimen name="codePaddingHorizontal">2dp</dimen>
+
+    <dimen name="codeViewMarginBottom">32dp</dimen>
 </resources>

@@ -1,5 +1,6 @@
 package com.tixon.morse.fragments;
 
+import android.animation.ValueAnimator;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +8,6 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.tixon.morse.R;
 import com.tixon.morse.views.CodeView;
@@ -19,6 +19,9 @@ public class BaseFragment extends Fragment {
     protected Vibrator vibrator;
     protected SharedPreferences sharedPreferences;
     protected boolean shouldVibrate = false;
+    protected int stepTime = 100;
+
+    protected ValueAnimator animator;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,11 @@ public class BaseFragment extends Fragment {
     public void onResume() {
         super.onResume();
         shouldVibrate = sharedPreferences.getBoolean(getString(R.string.keyVibrate), false);
+        stepTime = sharedPreferences.getInt(getString(R.string.keyStep), 100);
+        animator = ValueAnimator.ofInt(0, 360);
+        animator.setDuration(stepTime);
         Log.d("myLogs", "BaseFragment: shouldVibrate = " + shouldVibrate);
+        Log.d("myLogs", "BaseFragment: stepTime = " + stepTime);
     }
 
     protected void viewCode(String code, CodeView codeView) {
