@@ -24,7 +24,8 @@ public abstract class Morse {
     private long timePressed = 0;
     private long timeReleased = 0;
     private long timeRange = 0;
-    private long step;
+    private long step, wait;
+    private static final int CODE_LIMIT = 6;
 
     private ArrayList<String> russianAbc, russianMorse, letterCode;
 
@@ -90,7 +91,7 @@ public abstract class Morse {
         Log.d("myLogs", "time Return = " + timeReturn);
 
         if(timeReturn != timePressed) {
-            if(timeReturn < 390) {
+            if(timeReturn < wait-5) {
                 handler.removeCallbacks(detectSymbolRunnable);
                 Log.d("myLogs", "handler remove callbacks");
             } else {
@@ -105,8 +106,8 @@ public abstract class Morse {
         timeReleased = System.currentTimeMillis();
         timeRange = timeReleased - timePressed;
         Log.d("myLogs", "pressed time: " + timeReleased + "; range = " + timeRange);
-        //not add in letterCode list when its size reaches 5
-        if(letterCode.size() < 5) {
+        //not add in letterCode list when its size reaches 6
+        if(letterCode.size() < CODE_LIMIT) {
             //use stepTime
             if(timeRange > 0 && timeRange <= step) {
                 letterCode.add("."); //add dit
@@ -115,7 +116,7 @@ public abstract class Morse {
             }
         }
         onGenerateCode(getCode(letterCode));
-        handler.postDelayed(detectSymbolRunnable, 400);
+        handler.postDelayed(detectSymbolRunnable, wait);
         Log.d("myLogs", "handler post delayed (second)");
     }
 
@@ -131,7 +132,7 @@ public abstract class Morse {
             Log.d("myLogs", "time Return = " + timeReturn);
 
             if(timeReturn != timePressed) {
-                if(timeReturn < 390) {
+                if(timeReturn < wait-5) {
                     handler.removeCallbacks(detectSymbolRunnable);
                     Log.d("myLogs", "handler remove callbacks");
                 } else {
@@ -147,8 +148,8 @@ public abstract class Morse {
             timeReleased = System.currentTimeMillis();
             timeRange = timeReleased - timePressed;
             Log.d("myLogs", "pressed time: " + timeReleased + "; range = " + timeRange);
-            //not add in letterCode list when its size reaches 5
-            if(letterCode.size() < 5) {
+            //not add in letterCode list when its size reaches 6
+            if(letterCode.size() < CODE_LIMIT) {
                 //use stepTime
                 if(timeRange > 0 && timeRange <= step) {
                     letterCode.add("."); //add dit
@@ -157,7 +158,7 @@ public abstract class Morse {
                 }
             }
             onGenerateCode(getCode(letterCode));
-            handler.postDelayed(detectSymbolRunnable, 400);
+            handler.postDelayed(detectSymbolRunnable, wait);
             Log.d("myLogs", "handler post delayed (second)");
             return true;
         }
@@ -166,6 +167,7 @@ public abstract class Morse {
 
     public void updateSavedValues() {
         step = preferences.getInt(context.getString(R.string.keyStep), 100);
+        wait = preferences.getInt(context.getString(R.string.keyTimeWait), 400);
         Log.d("myLogs", "step = " + step);
     }
 
@@ -173,18 +175,10 @@ public abstract class Morse {
         return russianMorse.indexOf(code) == russianAbc.indexOf(letter);
     }
 
-    /*Handler vibrateCodeHandler = new Handler();
-    Runnable vibrateCodeRunnable = new Runnable() {
-        @Override
-        public void run() {
-            for(int i = 0; i < )
-        }
-    };*/
-
     private ArrayList<Long> pattern = new ArrayList<>();
     private long[] patternArray;
     long dot = 50l;
-    long dash = 150l;
+    long dash = 120l;
     long pause = 50l;
 
     public void vibrateCode(String code, Vibrator vibrator) {
@@ -194,8 +188,8 @@ public abstract class Morse {
                 pattern.add(pause); //add pause
             }
             if(code.charAt(i) == '_') {
-                pattern.add(dash); //add dash
                 pattern.add(pause); //add pause
+                pattern.add(dash); //add dash
             }
         }
         patternArray = new long[pattern.size()];

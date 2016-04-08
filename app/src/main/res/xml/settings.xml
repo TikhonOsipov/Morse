@@ -6,12 +6,12 @@
         android:summaryOff="@string/vibrateSummaryOff"
         android:title="@string/vibrateTitle" />
 
-    <com.tixon.morse.SeekBarPreference
+    <com.tixon.morse.views.SeekBarPreference
         android:key="@string/keyStep"
         android:title="@string/stepTitle"
         android:layout="@layout/seek_bar_preference_layout" />
 
-    <com.tixon.morse.SeekBarPreference
+    <com.tixon.morse.views.SeekBarPreference
         android:key="@string/keyTimeWait"
         android:title="@string/timeWaitTitle"
         android:layout="@layout/seek_bar_preference_layout" />

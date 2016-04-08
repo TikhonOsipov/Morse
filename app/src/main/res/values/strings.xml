@@ -41,6 +41,28 @@
         <item>Э</item>
         <item>Ю</item>
         <item>Я</item>
+
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>0</item>
+
+        <item>.</item>
+        <item>,</item>
+        <item>:</item>
+        <item>;</item>
+        <item>\?</item>
+        <item>!</item>
+        <item>-</item>
+        <item>\"</item>
+        <item>(</item>
+        <item>\/</item>
     </string-array>
 
     <string-array name="russian_morse">
@@ -75,6 +97,28 @@
         <item>.._..</item>
         <item>..__</item>
         <item>._._</item>
+
+        <item>.____</item>
+        <item>..___</item>
+        <item>...__</item>
+        <item>...._</item>
+        <item>.....</item>
+        <item>_....</item>
+        <item>__...</item>
+        <item>___..</item>
+        <item>____.</item>
+        <item>_____</item>
+
+        <item>......</item>
+        <item>._._._</item>
+        <item>_._._.</item>
+        <item>___...</item>
+        <item>..__..</item>
+        <item>__..__</item>
+        <item>_...._</item>
+        <item>._.._.</item>
+        <item>_.__._</item>
+        <item>_.._.</item>
     </string-array>
 
     <string name="correct">true</string>

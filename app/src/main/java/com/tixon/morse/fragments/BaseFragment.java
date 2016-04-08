@@ -20,6 +20,7 @@ public class BaseFragment extends Fragment {
     protected SharedPreferences sharedPreferences;
     protected boolean shouldVibrate = false;
     protected int stepTime = 100;
+    protected int waitTime = 400;
 
     protected ValueAnimator animator;
 
@@ -35,10 +36,12 @@ public class BaseFragment extends Fragment {
         super.onResume();
         shouldVibrate = sharedPreferences.getBoolean(getString(R.string.keyVibrate), false);
         stepTime = sharedPreferences.getInt(getString(R.string.keyStep), 100);
+        waitTime = sharedPreferences.getInt(getString(R.string.keyTimeWait), 400);
         animator = ValueAnimator.ofInt(0, 360);
         animator.setDuration(stepTime);
         Log.d("myLogs", "BaseFragment: shouldVibrate = " + shouldVibrate);
         Log.d("myLogs", "BaseFragment: stepTime = " + stepTime);
+        Log.d("myLogs", "BaseFragment: waitTime = " + waitTime);
     }
 
     protected void viewCode(String code, CodeView codeView) {

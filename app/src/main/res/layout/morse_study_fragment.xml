@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:codeview="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="android.view.View" />
@@ -51,7 +52,7 @@
             android:layout_height="wrap_content">
 
             <com.tixon.morse.views.CodeView
-                tools:text="._.."
+                codeview:isDark="true"
                 android:id="@+id/codePreview"
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
