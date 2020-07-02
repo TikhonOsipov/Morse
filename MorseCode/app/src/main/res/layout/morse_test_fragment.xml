@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="correct"
+            type="boolean" />
+
+        <variable
+            name="progress"
+            type="String" />
+
+        <variable
+            name="letter"
+            type="String" />
+
+        <variable
+            name="code"
+            type="String" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            tools:text="23/29"
+            android:id="@+id/progress"
+            android:gravity="center_horizontal"
+            android:text="@{progress}"
+            android:layout_marginBottom="8dp"
+            android:layout_above="@+id/pressurePanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:id="@+id/pressurePanel"
+            android:clickable="true"
+            android:background="@drawable/button_background"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+            <com.tixon.morse.views.CodeView
+                android:id="@+id/codeView"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginBottom="@dimen/codeViewMarginBottom"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                tools:text="Ы"
+                android:id="@+id/textLetter"
+                android:textSize="50sp"
+                android:text="@{letter}"
+                android:layout_marginTop="24dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                tools:text="true"
+                tools:textColor="@color/correct"
+                android:id="@+id/textCorrect"
+                android:textSize="30sp"
+                android:text="@{correct ? @string/correct : @string/incorrect}"
+                android:textColor="@{correct ? @color/correct : @color/incorrect}"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

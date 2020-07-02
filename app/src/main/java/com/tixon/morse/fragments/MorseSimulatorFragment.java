@@ -2,9 +2,9 @@ package com.tixon.morse.fragments;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;

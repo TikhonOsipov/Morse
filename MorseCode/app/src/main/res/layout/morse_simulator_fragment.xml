@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="letter"
+            type="String" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/pressurePanel"
+            android:clickable="true"
+            android:background="@drawable/button_background"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                tools:ignore="contentDescription"
+                android:id="@+id/dashAlert"
+                android:src="@drawable/red_circle"
+                android:visibility="invisible"
+                android:scaleType="fitXY"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp" />
+
+            <ImageView
+                tools:ignore="contentDescription"
+                android:id="@+id/progressBarBackground"
+                android:src="@drawable/progress_bar_background"
+                android:visibility="invisible"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp" />
+
+            <com.tixon.morse.views.RingProgressBar
+                android:id="@+id/dotProgressBar"
+                android:visibility="invisible"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp" />
+
+            <com.tixon.morse.views.CodeView
+                android:id="@+id/codeView"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginBottom="@dimen/codeViewMarginBottom"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                tools:text="Ы"
+                android:id="@+id/textLetter"
+                android:textSize="80sp"
+                android:text="@{letter}"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Keys -->
+    <string name="keyStep" translatable="false">step_setting</string>
+    <string name="keyVibrate" translatable="false">vibrate_setting</string>
+    <string name="keyTimeWait" translatable="false">time_wait_setting</string>
+
+    <!-- Strings -->
+    <!-- Vibrate preference -->
+    <string name="vibrateTitle">Vibration</string>
+    <string name="vibrateSummaryOn">Vibrate on input</string>
+    <string name="vibrateSummaryOff">Vibration disabled</string>
+
+    <!-- Step preference -->
+    <string name="stepTitle">Step</string>
+
+    <!-- Wait time for new symbol preference -->
+    <string name="timeWaitTitle">Waiting time</string>
+</resources>
